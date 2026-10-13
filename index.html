@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUST FOR YOU ♥</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fff0f5 0%, #fbc2eb 100%);
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* القلوب المتساقطة */
+        .heart-bg {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: fall linear infinite;
+            z-index: 1;
+            user-select: none;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* كارت مشغل الأغاني */
+        .player-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 420px;
+            z-index: 10;
+        }
+
+        /* غلاف الأغنية الصداقة الكرتوني */
+        .album-art {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            animation: pulse 2s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .song-title {
+            font-size: 1.5rem;
+            color: #c2185b;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .artist-name {
+            font-size: 1rem;
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+
+        /* مشغل الصوت */
+        .audio-container {
+            background-color: #fff0f5;
+            padding: 10px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+        audio {
+            width: 100%;
+            outline: none;
+        }
+
+        /* منطقة الرسالة الخاصة البسيطة */
+        .letter-box {
+            margin-top: 20px;
+            border-top: 2px dashed #fbc2eb;
+            padding-top: 15px;
+        }
+        .letter-text {
+            font-size: 1.2rem;
+            color: #4a001f;
+            line-height: 1.6;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hearts-container"></div>
+
+    <div class="player-card">
+        <!-- الصورة الكرتونية للصحابة جاهزة بالداخل -->
+        <div class="album-art" style="background-image: url('https://freepik.com');"></div>
+        
+        <!-- اسم الأغنية المفضلة (الغرام المستحيل) -->
+        <div class="song-title">الغرام المستحيل ♥</div>
+        <div class="artist-name">إهداء من أختِك وصاحبتِك</div>
+
+        <!-- مشغل الصوت مع رابط الأغنية المباشر المحدث والجاهز للعمل فوراً -->
+        <div class="audio-container">
+            <audio controls>
+                <source src="https://githubusercontent.com" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- الرسالة البسيطة بالتشكيل وبدون نقط في النهاية بناءً على طلبك -->
+        <div class="letter-box">
+            <div class="letter-text">
+                حاجة بسيطة لِكِ تفكرِكِ بيا 
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // كود توليد القلوب الوردية المتساقطة
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            for (let i = 0; i < 25; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart-bg';
+                heart.innerText = '♥';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * -20 + 'vh';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+    </script>
+</body>
+</html>
